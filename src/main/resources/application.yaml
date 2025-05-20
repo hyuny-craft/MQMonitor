@@ -1,0 +1,29 @@
+app:
+  kafka:
+    topic: main-topic
+    status-topic: status-topic
+
+spring:
+  application:
+    name: MessageCommandService
+  kafka:
+    bootstrap-servers: localhost:9092
+    group-id: consumer-group-1
+    auto-offset-reset: earliest
+    topic: main-topic
+    status-topic: status-topic
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+  aop:
+    proxy-target-class: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus # prometheus 엔트포인트 노출
+  prometheus:
+    metrics:
+      export:
+        enabled: true
