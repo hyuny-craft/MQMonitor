@@ -1,4 +1,4 @@
-package com.hyuny.mqmonitor.adapter.in.mq;
+package com.hyuny.mqmonitor.consumer.adapter.in;
 
 import com.hyuny.mqmonitor.application.MessageProcessor;
 import com.hyuny.mqmonitor.domain.Message;

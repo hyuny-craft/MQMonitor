@@ -1,20 +1,20 @@
-package com.hyuny.mqmonitor.adapter.out.mq;
+package com.hyuny.mqmonitor.publisher.adapter.out.kafka;
 
-import com.hyuny.mqmonitor.domain.Message;
-import com.hyuny.mqmonitor.domain.port.out.MessageClient;
+import com.hyuny.mqmonitor.common.application.port.out.MessagePublisher;
+import com.hyuny.mqmonitor.common.domain.Message;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
-public class KafkaMessageClient implements MessageClient {
+public class KafkaMessagePublisher implements MessagePublisher {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Value( "${app.kafka.topic}")
     private String topic;
 
-    public KafkaMessageClient(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaMessagePublisher(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 

@@ -1,4 +1,4 @@
-package com.hyuny.mqmonitor.domain;
+package com.hyuny.mqmonitor.common.domain;
 
 public record Message(String id, String payload) {
 }

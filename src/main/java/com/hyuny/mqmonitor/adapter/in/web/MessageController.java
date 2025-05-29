@@ -2,7 +2,7 @@ package com.hyuny.mqmonitor.adapter.in.web;
 
 import com.hyuny.mqmonitor.adapter.in.web.dto.MessageRequestDto;
 import com.hyuny.mqmonitor.application.MessageCommandService;
-import com.hyuny.mqmonitor.domain.Message;
+import com.hyuny.mqmonitor.common.domain.Message;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

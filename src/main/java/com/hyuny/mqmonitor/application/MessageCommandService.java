@@ -1,20 +1,20 @@
 package com.hyuny.mqmonitor.application;
 
-import com.hyuny.mqmonitor.domain.Message;
-import com.hyuny.mqmonitor.domain.port.out.MessageClient;
+import com.hyuny.mqmonitor.common.application.port.out.MessagePublisher;
+import com.hyuny.mqmonitor.common.domain.Message;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class MessageCommandService {
-    private final MessageClient messageClient;
+    private final MessagePublisher messagePublisher;
 
-    public MessageCommandService(MessageClient messageClient) {
-        this.messageClient = messageClient;
+    public MessageCommandService(MessagePublisher messagePublisher) {
+        this.messagePublisher = messagePublisher;
     }
 
     public void publishMessages(List<Message> messages) {
-        messages.forEach(messageClient::send);
+        messages.forEach(messagePublisher::send);
     }
 }
