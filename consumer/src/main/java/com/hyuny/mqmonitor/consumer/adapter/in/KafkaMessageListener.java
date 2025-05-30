@@ -1,7 +1,7 @@
 package com.hyuny.mqmonitor.consumer.adapter.in;
 
-import com.hyuny.mqmonitor.application.MessageProcessor;
-import com.hyuny.mqmonitor.domain.Message;
+import com.hyuny.mqmonitor.common.application.port.in.MessageConsumer;
+import com.hyuny.mqmonitor.common.domain.Message;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.KafkaHeaders;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class KafkaMessageListener {
+public class KafkaMessageListener implements MessageConsumer {
     private final MessageProcessor messageProcessor;
 
 

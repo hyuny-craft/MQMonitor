@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.hyuny'
+group = 'com.hyuny.consumer'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
@@ -10,8 +10,10 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    implementation project(':common')
+    implementation 'org.springframework.kafka:spring-kafka'
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {

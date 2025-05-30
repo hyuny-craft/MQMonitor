@@ -1,7 +1,7 @@
-package com.hyuny.mqmonitor.application;
+package com.hyuny.mqmonitor.consumer.adapter.in;
 
 import com.hyuny.mqmonitor.common.application.port.out.CounterClient;
-import com.hyuny.mqmonitor.common.application.port.out.StatusMessagePubllisher;
+import com.hyuny.mqmonitor.common.application.port.out.StatusMessageProducer;
 import com.hyuny.mqmonitor.common.domain.Message;
 import com.hyuny.mqmonitor.common.metrics.TimerClient;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MessageProcessor {
-    private final StatusMessagePubllisher statusClient;
+    private final StatusMessageProducer statusClient;
     private final TimerClient timer;
     private final CounterClient counter;
 
@@ -23,7 +23,7 @@ public class MessageProcessor {
                 System.out.printf("처리됨 → ID: %s / 내용: %s%n", message.id(), message.payload());
                 // Increment success counter with result tag
                 counter.increment("mqmonitor.message.processing.count", "result", "SUCCESS");
-                statusClient.publishStatus(message.id(), "SUCCESS", "");
+                statusClient.produce(message.id(), "SUCCESS", "");
             });
         } catch (Exception e) {
             extracted(message);
@@ -32,9 +32,7 @@ public class MessageProcessor {
 
     private void extracted(Message message) {
         System.out.printf("실패됨 → ID: %s / 내용: %s%n", message.id(), message.payload());
-        statusClient.publishStatus(message.id(), "FAILURE", "RuntimeException");
+        statusClient.produce(message.id(), "FAILURE", "RuntimeException");
         counter.increment("mqmonitor.message.processing.count", "result", "FAILURE");
     }
-
-
 }
