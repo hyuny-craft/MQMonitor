@@ -1,4 +1,4 @@
-rootProject.name = 'mqmonitor'
+rootProject.name = 'platform'
 
 include 'common'
 include 'publisher'
