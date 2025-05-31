@@ -1,4 +1,4 @@
-package mqmonitor.application;
+package com.hyuny.mqmonitor.application;
 
 import com.hyuny.mqmonitor.adapter.out.metrics.MicrometerTimerClient;
 import com.hyuny.mqmonitor.common.adapter.out.metrics.MicrometerCounterClient;

@@ -36,17 +36,27 @@ subprojects {
 
     if (project.name == 'app' ) {
         apply plugin: 'org.springframework.boot'
-        bootJar { enabled = true }
-        jar { enabled = false }
+        tasks.named('bootJar') {enabled = true}
+        tasks.named('jar') {enabled = false}
     } else {
-        jar {
+        tasks.named('jar') {
             enabled = true
-            archiveClassifier = '' // plain 제거
-        }
-        bootJar { enabled = false }
+            archiveClassifier = null}
+    }
+
+    tasks.withType(Jar).configureEach {
+        destinationDirectory.set(rootProject.layout.buildDirectory.dir("libs"))
     }
 }
+
 tasks.named('test') {
     useJUnitPlatform()
 }
 
+tasks.named('bootJar') {
+    enabled = false
+}
+
+tasks.named('jar') {
+    enabled = false
+}

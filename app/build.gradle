@@ -4,21 +4,24 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
-springBoot {
-    mainClass = 'com.hyuny.mqmonitor.MessageCommandServiceApplication'
-}
-
 group = 'com.hyuny.app'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
+def isBuildTask = gradle.startParameter.taskNames.any { it.contains('build') }
 
 dependencies {
-    implementation project(':common')
-    runtimeOnly project(':publisher')
-    runtimeOnly project(':consumer')
+    if (isBuildTask){
+        compileOnly project(':common')
+        compileOnly project(':publisher')
+        compileOnly project(':consumer')
+    } else {
+        implementation project(':common')
+        implementation project(':publisher')
+        implementation project(':consumer')
+    }
 
     testImplementation project(':publisher')
     testImplementation project(':consumer')
