@@ -1,6 +1,21 @@
-rootProject.name = 'platform'
 
-include 'common'
-include 'publisher'
-include 'consumer'
-include 'app'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()  // Gradle 공식 플러그인 저장소
+    }
+    plugins {
+        id 'java-library'
+        id 'org.springframework.boot' version '3.4.5'
+        id 'io.spring.dependency-management' version '1.1.7'
+    }
+
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral() // Spring 등 외부 라이브러리/플러그인 저장소
+    }
+}
+
+rootProject.name = 'platform'
+include 'common', 'publisher', 'consumer', 'app'

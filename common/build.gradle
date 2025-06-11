@@ -1,21 +1,14 @@
 plugins {
     id 'java'
+    id 'io.spring.dependency-management'
 }
-group = 'com.hyuny.mqmonitor'
+group = 'com.hyuny.app.common'
 version = '0.0.1-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-test {
-    useJUnitPlatform()
-}

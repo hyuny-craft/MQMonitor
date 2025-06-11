@@ -1,21 +1,16 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'io.spring.dependency-management'
 }
 
-group = 'com.hyuny.consumer'
+group = 'com.hyuny.app.consumer'  // 각각에 맞게 변경
 version = '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     implementation project(':common')
-    implementation 'org.springframework.kafka:spring-kafka'
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    compileOnly 'org.springframework.kafka:spring-kafka'
+
+
 }
 
-test {
-    useJUnitPlatform()
-}

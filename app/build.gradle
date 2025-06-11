@@ -1,44 +1,40 @@
 plugins {
-    id 'java'
     id 'org.springframework.boot'
     id 'io.spring.dependency-management'
+    id 'java'
+}
+
+springBoot {
+    mainClass = 'com.hyuny.app.MessageCommandServiceApplication'
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
 }
 
 group = 'com.hyuny.app'
 version = '0.0.1-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
-def isBuildTask = gradle.startParameter.taskNames.any { it.contains('build') }
-
 dependencies {
-    if (isBuildTask){
-        compileOnly project(':common')
-        compileOnly project(':publisher')
-        compileOnly project(':consumer')
-    } else {
-        implementation project(':common')
-        implementation project(':publisher')
-        implementation project(':consumer')
-    }
-
-    testImplementation project(':publisher')
-    testImplementation project(':consumer')
+    implementation project(':common')
+    implementation project(':publisher')
+    implementation project(':consumer')
 
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.mockito:mockito-inline:5.2.0'
 
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+
 }
 
-test {
-    useJUnitPlatform()
-}
+
