@@ -17,5 +17,9 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = 'platform'
-include 'common', 'publisher', 'consumer', 'app'
+rootProject.name = 'message-system'
+include 'global-utils'
+include 'app-core:domain'
+include 'app-core:infra'
+include 'app-api:user'
+include 'app-batch'

@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group = 'demo.app.batch'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':global-utils')
+    implementation project(':app-core:domain')
+
+    compileOnly 'org.springframework.kafka:spring-kafka'
+    implementation 'org.springframework.kafka:spring-kafka'
+}

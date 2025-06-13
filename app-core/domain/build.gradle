@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'demo.app.core.domain'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+    implementation project(':global-utils')
+
+    compileOnly 'org.springframework.kafka:spring-kafka'
+}
+

@@ -1,0 +1,11 @@
+plugins {
+    id 'java'
+    id 'io.spring.dependency-management'
+}
+group = 'demo.app.utils'
+version = '0.0.1-SNAPSHOT'
+
+dependencies {
+
+}
+
